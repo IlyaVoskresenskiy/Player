@@ -1,6 +1,6 @@
 ﻿namespace Player
 {
-    partial class Form1
+    partial class Play_f
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Play_f));
             this.Player = new AxWMPLib.AxWindowsMediaPlayer();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.open_button = new System.Windows.Forms.Button();
+            this.music_list = new System.Windows.Forms.ListBox();
+            this.next_button = new System.Windows.Forms.Button();
+            this.back_button = new System.Windows.Forms.Button();
+            this.ip_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,73 +48,66 @@
             this.Player.Size = new System.Drawing.Size(416, 208);
             this.Player.TabIndex = 0;
             // 
-            // openFileDialog1
+            // openFileDialog
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Multiselect = true;
+            this.openFileDialog.FileName = "openFileDialog1";
+            this.openFileDialog.Multiselect = true;
             // 
-            // button1
+            // open_button
             // 
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.Color.DarkGray;
-            this.button1.Location = new System.Drawing.Point(12, 218);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Open";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.open_button.AutoSize = true;
+            this.open_button.BackColor = System.Drawing.Color.DarkGray;
+            this.open_button.Location = new System.Drawing.Point(12, 218);
+            this.open_button.Name = "open_button";
+            this.open_button.Size = new System.Drawing.Size(75, 23);
+            this.open_button.TabIndex = 1;
+            this.open_button.Text = "Open";
+            this.open_button.UseVisualStyleBackColor = false;
+            this.open_button.Click += new System.EventHandler(this.open_button_Click);
             // 
-            // listBox1
+            // music_list
             // 
-            this.listBox1.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(12, 244);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(416, 68);
-            this.listBox1.TabIndex = 3;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.music_list.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.music_list.FormattingEnabled = true;
+            this.music_list.ItemHeight = 16;
+            this.music_list.Location = new System.Drawing.Point(12, 244);
+            this.music_list.Name = "music_list";
+            this.music_list.Size = new System.Drawing.Size(416, 68);
+            this.music_list.TabIndex = 3;
+            this.music_list.SelectedIndexChanged += new System.EventHandler(this.music_list_SelectedIndexChanged);
             // 
-            // button2
+            // next_button
             // 
-            this.button2.BackColor = System.Drawing.Color.DarkGray;
-            this.button2.Location = new System.Drawing.Point(328, 218);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Next";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.next_button.BackColor = System.Drawing.Color.DarkGray;
+            this.next_button.Location = new System.Drawing.Point(328, 218);
+            this.next_button.Name = "next_button";
+            this.next_button.Size = new System.Drawing.Size(75, 23);
+            this.next_button.TabIndex = 4;
+            this.next_button.Text = "Next";
+            this.next_button.UseVisualStyleBackColor = false;
+            this.next_button.Click += new System.EventHandler(this.next_button_Click);
             // 
-            // button3
+            // back_button
             // 
-            this.button3.BackColor = System.Drawing.Color.DarkGray;
-            this.button3.Location = new System.Drawing.Point(247, 218);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Prev";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.back_button.BackColor = System.Drawing.Color.DarkGray;
+            this.back_button.Location = new System.Drawing.Point(247, 218);
+            this.back_button.Name = "back_button";
+            this.back_button.Size = new System.Drawing.Size(75, 23);
+            this.back_button.TabIndex = 5;
+            this.back_button.Text = "Prev";
+            this.back_button.UseVisualStyleBackColor = false;
+            this.back_button.Click += new System.EventHandler(this.back_button_Click);
             // 
-            // timer1
+            // ip_label
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 10;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.ip_label.AutoSize = true;
+            this.ip_label.Location = new System.Drawing.Point(94, 219);
+            this.ip_label.Name = "ip_label";
+            this.ip_label.Size = new System.Drawing.Size(17, 13);
+            this.ip_label.TabIndex = 6;
+            this.ip_label.Text = "IP";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(94, 219);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // Form1
+            // Play_f
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -124,15 +115,15 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(440, 317);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ip_label);
+            this.Controls.Add(this.back_button);
+            this.Controls.Add(this.next_button);
+            this.Controls.Add(this.music_list);
+            this.Controls.Add(this.open_button);
             this.Controls.Add(this.Player);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "Play_f";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Player";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -146,13 +137,12 @@
         #endregion
 
         public AxWMPLib.AxWindowsMediaPlayer Player;
-        public System.Windows.Forms.OpenFileDialog openFileDialog1;
-        public System.Windows.Forms.Button button1;
-        public System.Windows.Forms.ListBox listBox1;
-        public System.Windows.Forms.Button button2;
-        public System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.OpenFileDialog openFileDialog;
+        public System.Windows.Forms.Button open_button;
+        public System.Windows.Forms.ListBox music_list;
+        public System.Windows.Forms.Button next_button;
+        public System.Windows.Forms.Button back_button;
+        private System.Windows.Forms.Label ip_label;
     }
 }
 

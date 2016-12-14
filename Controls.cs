@@ -8,54 +8,55 @@ using System.Windows.Forms;
 
 namespace Player
 {
-    class Ilya
+
+    class Controller
     {
         private bool f1 = true;
         private bool open_flag = true;
         private List<string> files = new List<string>();
-        public void open(ref OpenFileDialog openFileDialog1, ref ListBox listBox1, ref AxWMPLib.AxWindowsMediaPlayer Player)
+        public void open()
         {
             if (open_flag == true)
             {
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                if (Play_f.myForm.openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    for (int i = 0; i < openFileDialog1.SafeFileNames.Length; i++)
+                    for (int i = 0; i < Play_f.myForm.openFileDialog.SafeFileNames.Length; i++)
                     {
-                        listBox1.Items.Add(openFileDialog1.SafeFileNames[i]);
-                        files.Add(openFileDialog1.FileNames[i]);
+                        Play_f.myForm.music_list.Items.Add(Play_f.myForm.openFileDialog.SafeFileNames[i]);
+                        files.Add(Play_f.myForm.openFileDialog.FileNames[i]);
                     }
                 }
-                Player.URL = files[0];
-                listBox1.SelectedIndex = 0; open_flag = false;
+                Play_f.myForm.Player.URL = files[0];
+                Play_f.myForm.music_list.SelectedIndex = 0; open_flag = false;
             }
             else
             {
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                if (Play_f.myForm.openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    for (int i = 0; i < openFileDialog1.SafeFileNames.Length; i++)
+                    for (int i = 0; i < Play_f.myForm.openFileDialog.SafeFileNames.Length; i++)
                     {
-                        listBox1.Items.Add(openFileDialog1.SafeFileNames[i]);
-                        files.Add(openFileDialog1.FileNames[i]);
+                        Play_f.myForm.music_list.Items.Add(Play_f.myForm.openFileDialog.SafeFileNames[i]);
+                        files.Add(Play_f.myForm.openFileDialog.FileNames[i]);
                     }
                 }
-                Player.URL = files[0];
-                listBox1.SelectedIndex = 0; open_flag = false;
+                Play_f.myForm.Player.URL = files[0];
+                Play_f.myForm.music_list.SelectedIndex = 0; open_flag = false;
             }
         }
 
-        public void next(ref OpenFileDialog openFileDialog1, ref ListBox listBox1, ref AxWMPLib.AxWindowsMediaPlayer Player)
+        public void next()
         {
             try
             {
-                if (listBox1.SelectedIndex == files.Count - 1)
+                if (Play_f.myForm.music_list.SelectedIndex == files.Count - 1)
                 {
-                    listBox1.SelectedIndex = 0;
-                    Player.URL = files[0];
+                    Play_f.myForm.music_list.SelectedIndex = 0;
+                    Play_f.myForm.Player.URL = files[0];
                 }
                 else
                 {
-                    listBox1.SelectedIndex++;
-                    Player.URL = files[listBox1.SelectedIndex];
+                    Play_f.myForm.music_list.SelectedIndex++;
+                    Play_f.myForm.Player.URL = files[Play_f.myForm.music_list.SelectedIndex];
                 }
             }
 
@@ -65,19 +66,19 @@ namespace Player
             }
         }
 
-        public void back(ref OpenFileDialog openFileDialog1, ref ListBox listBox1, ref AxWMPLib.AxWindowsMediaPlayer Player)
+        public void back()
         {
             try
             {
-                if (listBox1.SelectedIndex == 0)
+                if (Play_f.myForm.music_list.SelectedIndex == 0)
                 {
-                    listBox1.SelectedIndex = files.Count - 1;
-                    Player.URL = files[listBox1.Items.Count - 1];
+                    Play_f.myForm.music_list.SelectedIndex = files.Count - 1;
+                    Play_f.myForm.Player.URL = files[Play_f.myForm.music_list.Items.Count - 1];
                 }
                 else
                 {
-                    listBox1.SelectedIndex--;
-                    Player.URL = files[listBox1.SelectedIndex];
+                    Play_f.myForm.music_list.SelectedIndex--;
+                    Play_f.myForm.Player.URL = files[Play_f.myForm.music_list.SelectedIndex];
                 }
             }
             catch (IndexOutOfRangeException ex)
@@ -86,25 +87,25 @@ namespace Player
             }
         }
 
-        public void play_pause(ref AxWMPLib.AxWindowsMediaPlayer Player)
+        public void play_pause()
         {
             if (f1 == false)
             {
-                Player.Ctlcontrols.play();
+                Play_f.myForm.Player.Ctlcontrols.play();
                 f1 = true;
             }
             else
             {
-                Player.Ctlcontrols.pause();
+                Play_f.myForm.Player.Ctlcontrols.pause();
                 f1 = false;
             }
         }
 
-        public void select(ref ListBox listBox1, ref AxWMPLib.AxWindowsMediaPlayer Player)
+        public void select()
         {
             try
             {
-                Player.URL = files[listBox1.SelectedIndex];
+                Play_f.myForm.Player.URL = files[Play_f.myForm.music_list.SelectedIndex];
             }
             catch (IndexOutOfRangeException ex)
             {

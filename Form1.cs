@@ -13,98 +13,53 @@ using System.Threading;
 
 namespace Player
 {
-    public partial class Form1 : Form
+    public partial class Play_f : Form
     {
-        
-        private Ilya il;
-        private Receive obj;
-        private string value;
-        private bool flag;
-        private Thread stream_rec;
-        public Form1()
+        public static Play_f myForm = null;
+        private Controller ctrl = null;
+        private Receive rec = null;
+        public Play_f()
         {
-            
-            flag = false;
-            value = null;
-            il = new Ilya();
-            obj = new Receive();
+            myForm = this;
+            ctrl = new Controller();
+            rec = new Receive();
             InitializeComponent();
         }
-         
-        public void button1_Click(object sender, EventArgs e)
+
+        public void open_button_Click(object sender, EventArgs e)
         {
-            
-            il.open(ref openFileDialog1, ref listBox1, ref Player);
+
+            ctrl.open();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void music_list_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            il.select(ref listBox1, ref Player);
+            ctrl.select();
         }
 
-        public void button2_Click(object sender, EventArgs e)
+        public void next_button_Click(object sender, EventArgs e)
         {
-            il.next(ref openFileDialog1, ref listBox1, ref Player);   
+            ctrl.next();   
         }
 
-        public void button3_Click(object sender, EventArgs e)
+        public void back_button_Click(object sender, EventArgs e)
         {
-            il.back(ref openFileDialog1, ref listBox1, ref Player);
-        }
-
-          
-        
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-            try
-            {
-                if (!flag)
-                {
-                    stream_rec = new Thread(() => value = obj.receiveCode());
-                    stream_rec.Start();
-                    flag = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            if (value == "1")
-                {
-                    il.next(ref openFileDialog1, ref listBox1, ref Player);
-                    value = " ";
-                    flag = false;
-                }
-            if (value == "-1")
-            {
-                il.back(ref openFileDialog1, ref listBox1, ref Player);
-                value = " ";
-                flag = false;
-            }
-            if (value == "0")
-            {
-                il.play_pause(ref Player);
-                value = " ";
-                flag = false;
-            }
+            ctrl.back();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            label1.Text = IpGet.GetIP();
+            ip_label.Text = IpGet.GetIP();
+            rec.receiveCode();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        public void click_pause()
         {
-
+            ctrl.play_pause();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
     }
 }
